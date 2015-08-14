@@ -1,0 +1,13 @@
+<h1>Edit page of comment</h1>
+
+<%= form_for ([@post ,@comment] ) do |f| %>
+  <p>
+    <%= f.label :comment_description %><br>
+    <%= f.text_field :comment_description %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

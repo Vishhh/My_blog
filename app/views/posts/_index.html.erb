@@ -1,0 +1,39 @@
+<%if user_signed_in? %>
+<div class ="text-center"><h2><kbd>Hey <%= current_user.first_name %></kbd></h2></div>
+<%end%>
+<div class ="text-center">
+    <h1><kbd>List Of Blogs Consist Title/ Subject/ Description.</h1></kbd></br></br>
+
+ <table class="table table-striped">
+ <tr>
+    <td><h3><bold><kbd>Title</kbd></bold></h3></div></td>
+    <td><h3><bold><kbd>Show</kbd></bold></h3></div></td>
+    <td><h3><bold><kbd>Images</kbd></bold></h3></div></td>
+   </tr>
+  </table>
+
+
+<div class= "container">
+  <table class="table table-striped">
+  <% @posts.each do |p| %>
+  <tr>
+    <%# if p.publish == true %>
+     <%if user_signed_in? %>
+      <td><h5><%= p.title  %></h5></td>
+      <td><h5><%= link_to 'Show blog ', post_path(p), remote: true %></h5></td>
+      <td><%= image_tag p.images.try(:first).try(:image_name).try(:thumb).try(:url) %></td>
+      <%else%>
+      <td><h5><%= p.title  %></h5></td>
+      <td><h5><%= link_to 'Show blog ', post_path(p) %></h5></td>
+      <td><%= image_tag p.images.try(:first).try(:image_name).try(:thumb).try(:url) %></td>
+      
+    <% end %>
+  </tr>
+  <% end %>
+  </table>
+</div>
+
+<%= will_paginate @post, renderer: BootstrapPagination::Rails %>
+<%= link_to "new", :controller => "posts", :action => "new",remote: true %>
+</div><%= link_to 'Sign in', new_user_session_path %>
+</h1></div>

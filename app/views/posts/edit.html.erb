@@ -1,0 +1,27 @@
+
+<div class ="text-center"><h2><kbd>Hey <%= current_user.first_name %> ,Edit Your Blog</kbd></h2></div></br>
+
+<div class="text-center" >
+<strong>My Blog</strong>
+
+<%= form_for @post do |f| %>
+<p>
+    <kbd><%= f.label :title %></kbd><br>
+    <%= f.text_field :title %><br>
+</p>
+<p>
+    <kbd><%= f.label :subject %></kbd><br>
+    <%= f.text_field :subject %><br>
+</p>
+<p>
+    <kbd><%= f.label :description %></kbd><br>
+    <%= f.text_area :description %><br>
+</p>
+
+
+<p>
+    <%= f.submit %><br>
+</p>
+</div>
+
+<% end %>

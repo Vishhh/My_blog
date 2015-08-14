@@ -1,0 +1,8 @@
+
+
+
+fff
+
+<tr><%= link_to 'Update', edit_my_blog_path %></tr></br>
+<tr><%= link_to 'Destroy', my_blog_path,method: :delete,
+data: { confirm: 'Are you sure?' } %></tr></br>

@@ -1,0 +1,37 @@
+<div class= "container">
+<div class = "text-center">
+<h2>Edit </h2>
+
+<%= form_for current_user do |f| %>
+    
+  <div class ="field">
+
+    <tr>
+    <td><%= f.label :first_name %></td>
+    <td><%= f.text_field :first_name %></td>
+    </td></br>
+    <td>
+    <%= f.label :last_name %></td>
+    <td><%= f.text_field :last_name %></td>
+    </td></br>
+
+<td>
+    <%= f.label :email %></td>
+    <td><%= f.email_field :email, autofocus: true %></td>
+</td></br>
+
+  </br>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+
+<% end %>
+
+
+
+
+
+<%= link_to "Back", :back %>
+</div>
+</div>

@@ -1,0 +1,51 @@
+
+<div class="text-center">
+		<%= form_for @post  , authenticity_token: true  do |f| %>
+		<p placeholder="Titile" ></p>
+		<h1><small></small>Blog Page <small></small></h1></br>
+
+
+<div class="container-fluid">
+	<div class ="row">
+		<p>
+			<bold><kbd><%= f.label :title %></kbd></bold></br>
+			<%= f.text_field :title %>
+			<br>
+		</p>
+
+		<p>
+		   <bold><kbd><%= f.label :subject %></kbd></bold><br>
+		   <%= f.text_field :subject %><br>
+		</p>
+
+		<p>
+		    <bold><kbd><%= f.label :description  %></kbd></bold><br></div>
+		    <%= f.text_area :description ,:rows => 10, :cols =>40 %><br>
+		</p>
+		<p>
+        <%= f.label :publish %>
+        <%= f.select :publish,[['yes',true],['no',false]] %>
+    </p>
+
+
+<p id="images">		
+<div class ="container">
+<div class="text-center">
+<div class="row">
+<%= f.fields_for :images do |ff|%>
+<div class="col-xs-6 col-md-4"><%= render 'image_fields', f: ff %></div>
+<div class="col-xs-12 col-md-6"><div class="links"><%= link_to_add_association 'add', f, :images %>			   	
+</div>
+</div>
+<% end %>
+
+</div>
+</div>
+</p>
+</div><%= f.submit "Post"  %>
+</div>
+	
+</div>
+
+<% end %>
+

@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+<% @posts.each do |p| %>
+<% if current_user.id == p.user_id %>
+<tr>
+<td><h5><%= p.title  %></h5></td>
+<td><h5><%= link_to 'Show blog ', post_path(p), remote: true %></h5></td>
+<td><%= image_tag p.images.try(:first).try(:image_name).try(:thumb).try(:url) %></td>
+</tr>
+<% end %>
+<% end %>

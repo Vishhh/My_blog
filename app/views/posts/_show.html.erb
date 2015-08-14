@@ -1,0 +1,66 @@
+<div class ="text-center"><h2><kbd>Hey <%= current_user.first_name %> Your Blog</kbd></h2></div>
+<div class ="container">
+  <div class="container-fluid">
+    <div class ="text-center">
+      <div class="row">
+
+      <%= image_tag (@post.images.first.image_name.url) %>
+
+        <h1><p class="text-primary" text-decoration ="underline" ><%= @post.title %></p><small><%= @post.subject %>
+         </small></h1></br></br><p><td>
+          <div class ="col-md-8"><em><div class="alert alert-success" role="alert"><h4><%= @post.description %></em></div></h4></div></p>
+
+
+
+        <% if @post.user.id == current_user.id %>
+      <tr><%= link_to 'Update', edit_post_path,class: "btn btn-primary" %></tr></br>
+    <tr><%= link_to 'Destroy', post_path, class: "btn btn-primary",method: :delete,
+        data: { confirm: 'Are you sure?' } %></tr>
+    <% else %>
+        <%= render 'partial' %>
+      <% end %>
+
+</div>
+</p></br>
+</br>
+  </div>
+    </div>
+      </div>
+        </div>
+
+
+<div class ="container">
+<div class= "col-md-6">
+<h3>Comments</h3>
+<% @post.comments.each do |comment| %>
+  <p>
+  <h3><%= comment.user.first_name %></h3>
+  Comment discription:
+  <%= comment.comment_description %>
+
+      <% if comment.user_id == current_user.id %>
+      <%= link_to "-Edit", edit_post_comment_path(@post,comment) %>
+      <% else %>
+      <%= render 'partial' %>
+      <% end %>
+    </p>
+<% end %>
+
+
+
+  <h2>Add a comment</h2>
+  <%= form_for([ @post , @post.comments.build ], remote: true) do |f| %>
+<p>
+<%= f.label :comment_description %></br>
+ <%= f.text_area :comment_description ,:rows => 7,:cols => 40 %>
+   </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+    </div>
+
+
+
+
+<%= link_to "new", :controller => "posts", :action => "new" %></br></br>

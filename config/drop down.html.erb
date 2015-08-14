@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+        <li class="dropdown">
+          <ul class="dropdown-menu">
+            <li><a href="http://localhost:3000/users/show">Profile</a></li> 
+            <li><%= link_to "Edit Profile",edit_user_registration_path %></li>
+            <li><%= link_to 'User Posts', user_posts_posts_path(Post.all_publish.paginate(:page => params[:page], :per_page =>10 )) %></li>
+            
+            <li><%= link_to 'signout', destroy_user_session_path() , method: :delete%></li>
+            <li><a href="http://localhost:3000/users/sign_in"><kbd>Sign In</kbd></a></li>
+            <li><a href="http://localhost:3000/users/sign_up"><kbd>Sign Up</kbd></a></li>
+
+            <li><a href="http://localhost:3000/users/password/new">Forget your password</a></li>
+          </ul>
+        </li>
+        <%else%>
+              <ul>
+                 <li><a href="http://localhost:3000/users/sign_in">signin</a></li>  
+                <li><a href="http://localhost:3000/users/sign_up">New user</a></li>  
+                </ul>
+      <% end %>
+
