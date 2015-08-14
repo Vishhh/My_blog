@@ -274,5 +274,7 @@ Devise.setup do |config|
 
    config.omniauth :twitter, "8pkw2hCuNxca6YUe6IobpbCor", "9h1sxb4aZPaT3O1CVAr1h4eDnjnneTXNHDBJ30I8ksyHIVkr4w", :scope => 'r_fullprofile, r_emailaddress'
 
+   config.omniauth :github, "22130d0859eb94042ec1", "6b4b3cedcdd11d52a8eebfa418369c5e18487701", :scope => 'user:email', info_fields: 'email, name'
+
 
 end
